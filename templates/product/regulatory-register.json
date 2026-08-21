@@ -1,0 +1,36 @@
+{
+  "product": "<product>",
+  "as_of": "YYYY-MM-DD",
+  "disclaimer": "Product requirements register; not legal, tax, or accounting advice.",
+  "status_values": [
+    "verified_product_requirement",
+    "professional_review_required",
+    "monitoring",
+    "deferred"
+  ],
+  "jurisdictions": [
+    {
+      "code": "XX",
+      "name": "<jurisdiction>",
+      "entries": [
+        {
+          "id": "XX-DOMAIN-001",
+          "domain": "<domain>",
+          "status": "professional_review_required",
+          "summary": "<verified fact or unresolved requirement>",
+          "product_implications": ["<implication>"],
+          "authoritative_sources": [
+            {
+              "authority": "<authority>",
+              "title": "<source title>",
+              "url": "https://example.invalid",
+              "last_verified": "YYYY-MM-DD"
+            }
+          ],
+          "professional_gate": "<required reviewer or decision>",
+          "owner": "<owner>"
+        }
+      ]
+    }
+  ]
+}

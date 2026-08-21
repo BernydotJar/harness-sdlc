@@ -13,6 +13,8 @@ Read `AGENTS.md`, then `RTK.md`, before taking action.
 ## Agent Routing
 
 - Use the Leader role for orchestration.
+- Use the Product Owner role for product discovery, outcomes, capability boundaries, release slices, regulatory evidence, open decisions, and Graph-transition assessment.
+- Product Owner artifacts provide context but never authorize implementation.
 - Use the Spec Author role for requirements, design, and tasks.
 - Use the Implementer role only after human approval.
 - Use the Reviewer role after implementation.

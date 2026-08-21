@@ -59,6 +59,13 @@
       "mode": "SHIP",
       "status": "pending",
       "summary": "Package the harness so it can be reused as a clean starter for future application repos."
+    },
+    {
+      "id": "008-product-owner-control-plane",
+      "title": "Product Owner control plane",
+      "mode": "SHIP",
+      "status": "review",
+      "summary": "Add reusable Product Owner discovery governance and an evidence-backed I-DO ERP product control plane for Colombia and Guatemala before Graph execution."
     }
   ]
 }
