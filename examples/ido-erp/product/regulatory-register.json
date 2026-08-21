@@ -1,0 +1,330 @@
+{
+  "product": "I-DO ERP",
+  "as_of": "2026-08-20",
+  "disclaimer": "This is a source-backed product requirements register, not legal, tax, accounting, labor, privacy, or professional advice. Production enablement requires current-source refresh and qualified local professional approval.",
+  "status_values": [
+    "verified_product_requirement",
+    "professional_review_required",
+    "monitoring",
+    "deferred"
+  ],
+  "jurisdictions": [
+    {
+      "code": "CO",
+      "name": "Colombia",
+      "launch_priority": "first_country_pack_candidate",
+      "entries": [
+        {
+          "id": "CO-FISCAL-001",
+          "domain": "electronic_invoicing_obligation",
+          "status": "verified_product_requirement",
+          "summary": "DIAN states that parties responsible for invoicing must invoice electronically; persons or companies selling goods or providing services generally must issue an invoice unless an express legal exception applies.",
+          "product_implications": [
+            "Model invoice responsibility and exceptions as effective-dated taxpayer configuration, not a universal boolean.",
+            "Require legal-entity fiscal identity, establishment context, numbering authorization, customer identity rules, and immutable issuance evidence.",
+            "Do not market I-DO as determining a customer's legal obligation without professional confirmation."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "DIAN",
+              "title": "Ser Facturador Electrónico",
+              "url": "https://www.dian.gov.co/impuestos/factura-electronica/como-hacerlo/Paginas/ser-facturador-electronico.aspx",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "DIAN",
+              "title": "Normativa para la facturación electrónica",
+              "url": "https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/normatividad/",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "Colombian tax professional confirms taxpayer scope, registrations, document types, exceptions, and effective rules before production enablement.",
+          "owner": "Product Owner + Colombia tax lead"
+        },
+        {
+          "id": "CO-FISCAL-002",
+          "domain": "invoice_validation_lifecycle_and_contingency",
+          "status": "verified_product_requirement",
+          "summary": "DIAN describes prior validation of electronic invoices and notes, real-time validation evidence, and specific contingency paths. A 2026 DIAN concept also distinguishes technical validation from the separate events required for a sales invoice to become a negotiable instrument in RADIAN.",
+          "product_implications": [
+            "Use explicit states for draft, signed, submitted, validated, rejected, contingency-issued, pending-transmission, credited/debited, cancelled where applicable, and reconciliation-required.",
+            "Store request, response, CUFE or equivalent identifier, validation result, timestamps, schema version, correlation, and contingency evidence.",
+            "Keep DIAN validation, commercial acceptance, title-value events, accounting posting, and payment state separate.",
+            "Implement idempotency and an unknown-result queue to prevent duplicate fiscal effects."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "DIAN",
+              "title": "Validación Previa",
+              "url": "https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/validacion-previa/",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "DIAN",
+              "title": "Inconvenientes tecnológicos",
+              "url": "https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/inconvenientes-tecnologicos/",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "DIAN",
+              "title": "Concepto 9471 de 2026",
+              "url": "https://normograma.dian.gov.co/dian/compilacion/docs/oficio_dian_9471_2026.htm",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "Tax and commercial-law reviewers approve the state machine, contingency behavior, notes, acceptance events, and RADIAN scope before release.",
+          "owner": "Product Owner + Colombia tax/commercial counsel + engineering"
+        },
+        {
+          "id": "CO-PAYROLL-001",
+          "domain": "electronic_payroll_support",
+          "status": "professional_review_required",
+          "summary": "DIAN states that the electronic payroll support document reflects earned and deducted values, supports employer tax costs and deductions, and is generated and transmitted for DIAN validation independently for each beneficiary when the obligated party requires that support.",
+          "product_implications": [
+            "Treat electronic payroll support as a country-gated fiscal workflow distinct from the employee payslip and the general ledger.",
+            "Require per-beneficiary generation, CUNE or applicable identifier, signature/software evidence, adjustment notes, and validation response retention.",
+            "Defer full payroll from the first production slice until labor, social-security, withholding, privacy, and operational requirements are separately researched."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "DIAN",
+              "title": "Abecé Documento Soporte de Nómina Electrónica",
+              "url": "https://www.dian.gov.co/Prensa/Aprendelo-en-un-DIAN-X3/Paginas/Abece-Documento-Soporte-de-Nomina-Electronica.aspx",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "DIAN",
+              "title": "Soporte de pago de nómina electrónica",
+              "url": "https://micrositios.dian.gov.co/sistema-de-facturacion-electronica/soporte-de-pago-de-nomina-electronica/",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "Colombian labor/payroll and tax professionals approve scope, calculations, timelines, corrections, retention, and employee-data treatment.",
+          "owner": "Product Owner + Colombia payroll/tax lead"
+        },
+        {
+          "id": "CO-PRIVACY-001",
+          "domain": "personal_data_and_cross_border_processing",
+          "status": "professional_review_required",
+          "summary": "Colombia's Ley Estatutaria 1581 de 2012 establishes the general personal-data regime. SIC guidance identifies restrictions and exceptions for international transfers where the destination does not provide an adequate protection level.",
+          "product_implications": [
+            "Maintain a data inventory, purpose, legal basis or authorization evidence, role of controller/processor, retention, deletion, access and correction workflow, incident process, and subprocessor register.",
+            "Make data region, international transfer, support access, analytics, AI processing, backups, and subprocessors explicit architectural and contractual decisions.",
+            "Separate customer configuration from I-DO's own obligations as service provider and potential data processor."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "Superintendencia de Industria y Comercio",
+              "title": "Ley Estatutaria 1581 de 2012",
+              "url": "https://sedeelectronica.sic.gov.co/transparencia/normativa/ley-estatutaria-1581-de-2012",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Superintendencia de Industria y Comercio",
+              "title": "Normas Corporativas Vinculantes",
+              "url": "https://sedeelectronica.sic.gov.co/delegatura/proteccion-de-datos-personales/normas-corporativas-vinculantes",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "Colombian privacy counsel approves the data map, notices, contracts, transfer mechanism, retention, subprocessors, rights workflows, and incident obligations.",
+          "owner": "Privacy lead + security + operations"
+        },
+        {
+          "id": "CO-ACCOUNTING-001",
+          "domain": "financial_reporting_frameworks",
+          "status": "professional_review_required",
+          "summary": "Ley 1314 de 2009 establishes Colombia's accounting and financial-information framework; Decreto 2420 de 2015 compiles technical frameworks by preparer group. Decreto 0701 of 7 July 2026 modifies parts of the Group 1 and SME Group 2 frameworks, demonstrating that country accounting packs need version and effective-date control.",
+          "product_implications": [
+            "Record the legal entity's applicable reporting group and professional determination rather than infer it from company size alone.",
+            "Version account mappings, policies, disclosures, report definitions, and effective dates.",
+            "Keep tax rules and financial-reporting rules distinct, with explicit reconciliations where required."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "Congreso de Colombia",
+              "title": "Ley 1314 de 2009",
+              "url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1314_2009.html",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "SUIN-Juriscol",
+              "title": "Decreto 2420 de 2015",
+              "url": "https://www.suin-juriscol.gov.co/clp/contenidos.dll/Decretos/30030273",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Ministerio de Comercio, Industria y Turismo",
+              "title": "Decreto 0701 del 7 de julio de 2026",
+              "url": "https://www.mincit.gov.co/normatividad/decretos/2026/decreto-0701-del-7-de-julio-de-2026",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "A Colombian public accountant confirms entity classification, recognition, measurement, presentation, disclosures, tax reconciliation, and effective dates.",
+          "owner": "Finance domain owner + Colombia accounting lead"
+        }
+      ]
+    },
+    {
+      "code": "GT",
+      "name": "Guatemala",
+      "launch_priority": "first_country_pack_candidate",
+      "entries": [
+        {
+          "id": "GT-FISCAL-001",
+          "domain": "fel_and_dte_lifecycle",
+          "status": "verified_product_requirement",
+          "summary": "SAT describes FEL as the operational model for electronic issuance, transmission, certification, and conservation of authorized tax documents. Its current FAQ states that taxpayers in the general VAT, small taxpayer, primary, and livestock regimes must issue DTE under FEL, with additional availability for exempt, nonprofit, and state entities.",
+          "product_implications": [
+            "Model taxpayer regime and habilitation as effective-dated legal-entity configuration confirmed by a professional.",
+            "Support DTE types through a versioned country document catalog rather than hard-coded screens.",
+            "Preserve XML, signature, authorization, certification, delivery, SAT verification, cancellation, rejection, and reversal evidence as separate lifecycle events.",
+            "Do not assume preauthorized numbering ranges; retain the authorization assigned during certification."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Régimen de Factura Electrónica en Línea",
+              "url": "https://portal.sat.gob.gt/portal/efactura/",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Cumplimiento Tributario — Preguntas frecuentes FEL",
+              "url": "https://portal.sat.gob.gt/portal/preguntas-frecuentes/cumplimiento-tributario/",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "A Guatemalan tax professional confirms taxpayer regime, habilitation, DTE catalog, delivery, cancellation, rejection, reversal, and filing relationships before enablement.",
+          "owner": "Product Owner + Guatemala tax lead"
+        },
+        {
+          "id": "GT-FISCAL-002",
+          "domain": "fel_certifier_and_technical_contract",
+          "status": "verified_product_requirement",
+          "summary": "SAT states that an emitter can use its own or contracted system and transmits DTE to an accredited certifier for validation and authorization. SAT publishes technical services, rules and validations, the main DTE schema, complements, and cancellation schemas; the certifier returns certified DTE and transmits them to SAT for validity or rejection.",
+          "product_implications": [
+            "Isolate certifier-specific credentials and payloads behind a Guatemala FEL adapter contract.",
+            "Pin schema, complement, service, rule, and validation versions with retrieval and effective dates.",
+            "Represent certifier acceptance, SAT validity/rejection, delivery, cancellation, and unknown outcome separately.",
+            "Require idempotency, retry policy, reconciliation, provider failover decision, and immutable request/response evidence."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Emisor de DTE",
+              "url": "https://portal.sat.gob.gt/portal/emisor-de-dte/",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Certificador de DTE",
+              "url": "https://portal.sat.gob.gt/portal/certificador-de-dte/",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Documentación técnica del Régimen FEL",
+              "url": "https://portal.sat.gob.gt/portal/documentacion-tecnica-del-regimen-fel",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Reglas y Validaciones FEL — publicación 27 febrero 2026",
+              "url": "https://portal.sat.gob.gt/portal/wpfd_file/reglas-y-validaciones-fel-5/",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "Engineering, security, procurement, and Guatemala tax reviewers approve the certifier strategy, technical versions, credentials, SLA, data terms, contingency, and reconciliation design.",
+          "owner": "Product Owner + Guatemala tax lead + engineering"
+        },
+        {
+          "id": "GT-ACCOUNTING-001",
+          "domain": "double_entry_and_required_books",
+          "status": "professional_review_required",
+          "summary": "The Guatemalan Congress record for Decreto 40-99 describes the amendment to Commercial Code article 368 requiring organized double-entry accounting using generally accepted accounting principles and identifying inventory, journal, general ledger, and financial-statements books.",
+          "product_implications": [
+            "The financial kernel must enforce balanced double-entry and reproducible books from immutable posted entries.",
+            "Book formats, authorization, retention, language, period, and electronic acceptability require current professional confirmation.",
+            "Inventory and financial-statement books must be considered in the country pack even when inventory functionality is deferred."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "Congreso de la República de Guatemala",
+              "title": "Decreto 40-99 — modificación del artículo 368 del Código de Comercio",
+              "url": "https://www.congreso.gob.gt/detalle_pdf/decretos/574",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Habilitación de Libros Contables",
+              "url": "https://portal.sat.gob.gt/portal/wpfd_file/habilitacion-de-libros-contables/",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "A Guatemalan accountant and counsel confirm applicable books, authorization, form, retention, signatures, reporting framework, and entity-specific exceptions.",
+          "owner": "Finance domain owner + Guatemala accounting lead"
+        },
+        {
+          "id": "GT-TAXBOOKS-001",
+          "domain": "vat_books_and_electronic_reports",
+          "status": "professional_review_required",
+          "summary": "SAT provides an electronic tax-book system to facilitate purchase and sales book records for taxpayers in applicable VAT and income-tax regimes. For taxpayers classified as special, SAT requires an electronic purchase and sales report and states that this report does not replace the underlying mandatory purchase and sales books.",
+          "product_implications": [
+            "Generate purchase and sales book data from reconciled source documents and preserve traceability to DTE and ledger entries.",
+            "Model taxpayer classification and report obligation separately from the existence of statutory books.",
+            "Version export layouts, periods, corrections, acknowledgments, and evidence; never infer a filing obligation from transactions alone."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Libro Electrónico Tributario IVA General",
+              "url": "https://portal.sat.gob.gt/portal/libro-electronico-tributario/iva-general/",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Informe Electrónico de Compras y Ventas",
+              "url": "https://portal.sat.gob.gt/portal/informe-electronico-de-compras-y-venta/",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Superintendencia de Administración Tributaria",
+              "title": "Preguntas frecuentes — Contribuyentes Especiales",
+              "url": "https://portal.sat.gob.gt/portal/preguntas-frecuentes/contribuyentes-especiales/",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "A Guatemalan tax professional approves taxpayer classification, books, reports, periods, layouts, correction procedures, and filing responsibilities.",
+          "owner": "Product Owner + Guatemala tax/accounting lead"
+        },
+        {
+          "id": "GT-PRIVACY-001",
+          "domain": "personal_data_legal_landscape",
+          "status": "monitoring",
+          "summary": "Official Congress records show that initiative 6464 proposes a personal-data and digital-rights law and remained under legislative study on 16 July 2026. This source establishes the initiative's status, not a complete statement of all current Guatemalan privacy, confidentiality, consumer, labor, banking, tax, or constitutional obligations.",
+          "product_implications": [
+            "Do not encode the proposal as enacted law or conclude that no privacy duties exist.",
+            "Require counsel to map current applicable obligations, sector rules, contracts, confidentiality, data-subject rights, transfers, retention, incidents, and future transition if legislation is enacted.",
+            "Adopt a high common privacy baseline in the product while preserving country-specific notices, terms, rights, and retention configuration."
+          ],
+          "authoritative_sources": [
+            {
+              "authority": "Congreso de la República de Guatemala",
+              "title": "Iniciativa 6464 — estado oficial",
+              "url": "https://www.congreso.gob.gt/detalle_pdf/iniciativas/6196",
+              "last_verified": "2026-08-20"
+            },
+            {
+              "authority": "Congreso de la República de Guatemala",
+              "title": "Protección de información digital sigue causando discusión — 16 julio 2026",
+              "url": "https://www.congreso.gob.gt/noticias_congreso/16492/2026/3",
+              "last_verified": "2026-08-20"
+            }
+          ],
+          "professional_gate": "Guatemalan privacy/legal counsel provides a current legal map and monitors initiative 6464 and other relevant enactments before production processing.",
+          "owner": "Privacy lead + Guatemala counsel + security"
+        }
+      ]
+    }
+  ]
+}

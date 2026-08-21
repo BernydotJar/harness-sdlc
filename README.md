@@ -9,6 +9,7 @@ It combines:
 - Spec-Driven Development
 - Loop Engineering
 - agent role separation
+- evidence-backed product ownership before specification
 - reusable skills
 - OpenCode command contracts
 - Context7 documentation checkpoints
@@ -43,11 +44,13 @@ flowchart LR
 ```mermaid
 flowchart TD
   human[Human] --> leader[Leader]
+  leader --> product_owner[Product Owner]
   leader --> spec_author[Spec Author]
   leader --> implementer[Implementer]
   leader --> reviewer[Reviewer]
   reviewer --> production_reviewer[Production Reviewer]
 
+  product_owner --> product_memory[Product brief + capability map + regulatory register]
   spec_author --> specs[requirements.md + design.md + tasks.md]
   implementer --> code[Approved file changes]
   reviewer --> report[Review artifact]
@@ -143,6 +146,23 @@ examples  = small portable reference shapes
 Harness SDLC is not a prompt collection.
 
 It is a reusable control system for shipping software with AI agents.
+
+## Product Discovery Layer
+
+The Product Owner role operates before feature specification when a product mandate is broad, multi-jurisdictional, financially sensitive, or not yet tied to a verified application repository.
+
+It produces reviewable product memory:
+
+- product brief and outcomes;
+- capability and dependency map;
+- thin but complete production slices;
+- regulatory register with authoritative sources and professional gates;
+- open decisions;
+- readiness assessment for later graph execution.
+
+Product discovery never authorizes application implementation. The Spec Author still converts one bounded increment into a feature spec, and human approval remains mandatory.
+
+See `examples/ido-erp/` for a SHIP-mode ERP/SaaS example beginning with Colombia and Guatemala.
 
 ## First Workflow
 

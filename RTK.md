@@ -74,6 +74,14 @@ Agents must respect those file boundaries.
 
 ## Role Separation
 
+Product Owner:
+
+- Converts a human mandate into an evidence-backed product control plane.
+- Maintains product briefs, outcomes, capability maps, release slices, regulatory registers, open decisions, and Graph transition readiness.
+- Separates verified facts, inferences, hypotheses, and professional decisions.
+- Must not implement application code or treat product memory as implementation authority.
+- For I-DO, defaults product increments to SHIP and preserves a canonical financial core with versioned country packs.
+
 Leader:
 
 - Orchestrates the workflow.
